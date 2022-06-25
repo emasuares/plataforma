@@ -20,6 +20,7 @@
           <span class="navbar-brand mb-0 h1">Plataforma Representaciones</span>
           <form class="form-inline my-2 my-lg-0">
             <input
+              placeholder="Buscar"
               id="searchTerm"
               type="search"
               onkeyup="doSearch()"
@@ -28,7 +29,281 @@
           </form>
         </div>
       </nav>
+      <ul class="navbar-dark">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+            >Menu</a
+          >
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a class="dropdown-item" id="pagoefect" href="#"
+                >Nuevo Pago en Efectivo</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" id="pagotrans" href="#"
+                >Nuevo Pago Transferencia</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" id="pagocheque" href="#"
+                >Nuevo Pago Cheque</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" id="factRem" href="#"
+                >Nueva Factura-Remito</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" id="nc" href="#"
+                >Nueva Nota de Credito</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
     </header>
+
+    <!-- Formulario para pagos en Efectivo-->
+    <form action="" id="eftform" style="display: none">
+      <div class="mb-3 row">
+        <label for="Efectivo" class="col-lg col-form-label"
+          >Pago en Efectivo</label
+        >
+      </div>
+      <div class="mb-3 row">
+        <label for="inputdate" class="col-sm-2 form-label">Fecha</label>
+        <div class="col-sm-10">
+          <input
+            type="date"
+            required
+            aria-required="true"
+            class="form-control"
+            id="fechaeft"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label"
+          >Numero de Recibo</label
+        >
+        <div class="col-sm-10">
+          <input
+            placeholder="Numero de Recibo"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="reciboeft"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label">Importe </label>
+        <div class="col-sm-10">
+          <input
+            placeholder="Importe"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="impeft"
+          />
+        </div>
+      </div>
+      <button id="eftbtn" class="btn btn-primary">Agregar Pago</button>
+    </form>
+
+    <!-- Formulario Transferencias-->
+    <form action="" id="transform" style="display: none">
+      <div class="mb-3 row">
+        <label for="Efectivo" class="col-sm-2 col-form-label"
+          >Nueva Transferencia</label
+        >
+      </div>
+      <div class="mb-3 row">
+        <label for="inputdate" class="col-sm-2 form-label">Fecha</label>
+        <div class="col-sm-10">
+          <input
+            type="date"
+            required
+            aria-required="true"
+            class="form-control"
+            id="fecha"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label"
+          >Numero de Recibo</label
+        >
+        <div class="col-sm-10">
+          <input
+            placeholder="Numero de Recibo"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="Amount"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label"
+          >Numero de Comprobante</label
+        >
+        <div class="col-sm-10">
+          <input
+            placeholder="Numero de Comprobante"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="NroComprobante"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label">Banco</label>
+        <div class="col-sm-10">
+          <input
+            placeholder="Nombre Entidad Bancaria"
+            type="Text"
+            required
+            aria-required="true"
+            class="form-control"
+            id="banco"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label">Importe </label>
+        <div class="col-sm-10">
+          <input
+            placeholder="Importe"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="Amount"
+          />
+        </div>
+      </div>
+      <button id="transbtn" class="btn btn-primary">Agregar Pago</button>
+    </form>
+
+    <!-- Formulario Cheques-->
+    <form action="" id="chequeform" style="display: none">
+      <div class="mb-3 row">
+        <label for="Efectivo" class="col-sm-2 col-form-label"
+          >Nuevo Cheque</label
+        >
+      </div>
+      <div class="mb-3 row">
+        <label for="inputdate" class="col-sm-2 form-label">Fecha</label>
+        <div class="col-sm-10">
+          <input
+            type="date"
+            required
+            aria-required="true"
+            class="form-control"
+            id="fecha"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label"
+          >Numero de Recibo</label
+        >
+        <div class="col-sm-10">
+          <input
+            placeholder="Numero de Recibo"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="Amount"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label"
+          >Numero de Cheque</label
+        >
+        <div class="col-sm-10">
+          <input
+            placeholder="Numero de Cheque"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="NroCheque"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label">Banco</label>
+        <div class="col-sm-10">
+          <input
+            placeholder="Nombre Entidad Bancaria"
+            type="Text"
+            required
+            aria-required="true"
+            class="form-control"
+            id="banco"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputdate" class="col-sm-2 form-label"
+          >Fecha de cobro</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="date"
+            required
+            aria-required="true"
+            class="form-control"
+            id="fechacobro"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputdate" class="col-sm-2 form-label">Cheque Propio</label>
+        <div class="col-sm-10">
+          <select
+            class="form-select"
+            required
+            aria-required="true"
+            aria-label="Default select example"
+          >
+            <option selected>Cheque Propio</option>
+            <option value="1">Si</option>
+            <option value="2">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputimport" class="col-sm-2 form-label">Importe </label>
+        <div class="col-sm-10">
+          <input
+            placeholder="Importe"
+            type="number"
+            required
+            aria-required="true"
+            class="form-control"
+            id="Amount"
+          />
+        </div>
+      </div>
+      <button id="chequebtn" class="btn btn-primary">Agregar Pago</button>
+    </form>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

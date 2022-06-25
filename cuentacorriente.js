@@ -357,6 +357,101 @@ const bimboRem=[
     {id:2, fecha:"26/02/22", tipo:"Remito",numero: 25106 ,importe:2300},
 ]
 
+const efectivo =[
+    {cliente:1, fechapago:"2022/06/01", numrecibo:25369, importe:2300 },
+]
+
+const cheques= [
+    {cliente:0, fechapago:"2022/06/01" ,numrecibo:25369 , numerocheque: 23586958, banco:"Santander Rio" , fechadecobro: "26/08/22", propio: "Si" , importe: 25960},
+]
+
+const transferencias = [
+    {cliente: 0, fechapago:"2022/06/01", numrecibo: 25369 , numcomprobante:256325 , banco:"Santander" , importe:12352},
+]
+
+function nuevoPagoEft () {
+    var formulario=document.getElementById('eftform');
+    if (formulario.style.display=="none"){
+        formulario.style=('display:block');
+    }else if (formulario.style.display=="block"){
+        formulario.style=('display:none');
+    }
+    
+     
+}
+function nuevoPagoTrans () {
+    var formulario=document.getElementById('transform');
+    if (formulario.style.display=="none"){
+        formulario.style=('display:block');
+    }else if (formulario.style.display=="block"){
+        formulario.style=('display:none');
+    }
+     
+}
+function nuevoPagoCheque () {
+    var formulario=document.getElementById('chequeform');
+    if (formulario.style.display=="none"){
+        formulario.style=('display:block');
+    }else if (formulario.style.display=="block"){
+        formulario.style=('display:none');
+    }
+}
+//funcion para crear objeto de pago en efectivo
+function nuevoEft(cliente,fechapago,numrecibo,importe){
+    this.cliente=cliente;
+    this.fechapago=fechapago;
+    this.numrecibo=numrecibo;
+    this.importe=importe
+}
+//funcion para crear objeto de pago con transferencia bancaria
+function nuevaTrans(cliente,fechapago,numrecibo,numcomprobante,banco,importe){
+    this.cliente=cliente;
+    this.fechapago=fechapago;
+    this.numrecibo=numrecibo;
+    this.numcomprobante=numcomprobante;
+    this.banco=banco;
+    this.importe=importe;
+}
+
+//{cliente:0, fechapago:"01/06/22" ,numrecibo:25369 , numerocheque: 23586958, banco:"Santander Rio" , FechaDeCobro: "26/08/22", Propio: "Si" , importe: 25960}
+function nuevaTrans(cliente,fechapago,numrecibo,numerocheque,banco,fechadecobro,propio,importe){
+    this.cliente=cliente;
+    this.fechapago=fechapago;
+    this.numrecibo=numrecibo;
+    this.numerocheque=numerocheque;
+    this.banco=banco;
+    this.fechadecobro=fechadecobro;
+    this.propio=propio;
+    this.importe=importe;
+}
+
+
+function submitEft(){
+    var formulario=document.getElementById('eftform');
+    let clnt=numero;
+    let fp=document.getElementById('fechaeft').value;
+    let nr=document.getElementById('reciboeft').value;
+    let imp=document.getElementById('impeft').value;
+    console.log(clnt);
+    console.log(fp);
+    console.log(nr);
+    console.log(imp);
+    //const nuevopagoefectivo= new nuevoEft(clnt,fp,nr,imp);
+    efectivo.push(new nuevoEft(clnt,fp,nr,imp) );
+    formulario.style=('display:none');
+    console.log(efectivo);
+}
+
+function submitTrans(){
+    
+
+}
+
+function submitCheque(){
+    
+
+}
+
 function IrAPago(){
     var j = this.classList;
     JSON.stringify(localStorage.setItem('numeroPago',j));
@@ -467,8 +562,6 @@ function genera_tabla(a,b,c) {
       var hilera = document.createElement("tr");
       if (c[i].id==numero){
           sumador+=c[i].importe;
-          console.log(sumador);
-          console.log(numero);
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
         // texto sea el contenido de <td>, ubica el elemento <td> al final
         // de la hilera de la tabla
@@ -533,86 +626,93 @@ function genera_tabla(a,b,c) {
 
 
 if (emp=="Arcor" && tipo=="Factura"){
-    console.log(emp);
     maximo=arcorFact.length;
     cantidad=Object.keys(arcorFact[0]).length;
     genera_tabla(maximo,cantidad,arcorFact);
 
 
 }else if (emp=="Arcor" && tipo=="Remito"){
-    console.log(emp);
     maximo=arcorRem.length;
     cantidad=Object.keys(arcorRem[0]).length;
     genera_tabla(maximo,cantidad,arcorRem);
 }else if (emp=="CocaCola" && tipo=="Factura"){
-    console.log(emp);
     maximo=cocacolaFact.length;
     cantidad=Object.keys(cocacolaFact[0]).length;
     genera_tabla(maximo,cantidad,cocacolaFact);
 
 
 }else if (emp=="CocaCola" && tipo=="Remito"){
-    console.log(emp);
     maximo=cocacolaRem.length;
     cantidad=Object.keys(cocacolaRem[0]).length;
     genera_tabla(maximo,cantidad,cocacolaRem);
 
 
 }else if (emp=="Swift" && tipo=="Factura"){
-    console.log(emp);
     maximo=swiftFact.length;
     cantidad=Object.keys(swiftFact[0]).length;
     genera_tabla(maximo,cantidad,swiftFact);
 
 
 }else if (emp=="Swift" && tipo=="Remito"){
-    console.log(emp);
     maximo=swiftRem.length;
     cantidad=Object.keys(swiftRem[0]).length;
     genera_tabla(maximo,cantidad,swiftRem);
 
 
 }else if (emp=="Paty" && tipo=="Factura"){
-    console.log(emp);
     maximo=patyFact.length;
     cantidad=Object.keys(patyFact[0]).length;
     genera_tabla(maximo,cantidad,patyFact);
 
 }else if (emp=="Paty" && tipo=="Remito"){
-    console.log(emp);
     maximo=patyRem.length;
     cantidad=Object.keys(patyRem[0]).length;
     genera_tabla(maximo,cantidad,patyRem);
 
 }else if (emp=="Lays" && tipo=="Factura"){
-    console.log(emp);
     maximo=laysFact.length;
-    console.log(maximo);
     cantidad=Object.keys(laysFact[0]).length;
-    console.log(cantidad);
     genera_tabla(maximo,cantidad,laysFact);
 
 
 }else if (emp=="Lays" && tipo=="Remito"){
-    console.log(emp);
     maximo=laysRem.length;
-    console.log(maximo);
     cantidad=Object.keys(laysRem[0]).length;
-    console.log(cantidad);
     genera_tabla(maximo,cantidad,laysRem);
 
 
 }else if (emp=="Bimbo" && tipo=="Factura"){
-    console.log(emp);
     maximo=bimboFact.length;
     cantidad=Object.keys(bimboFact[0]).length;
     genera_tabla(maximo,cantidad,bimboFact);
 }else if (emp=="Bimbo" && tipo=="Remito"){
-    console.log(emp);
     maximo=bimboRem.length;
     cantidad=Object.keys(bimboRem[0]).length;
     genera_tabla(maximo,cantidad,bimboRem);
 }
+
+// agregando eventos a items del menu 
+var boton=document.getElementById('pagoefect');
+boton.addEventListener('click',nuevoPagoEft);
+boton=document.getElementById('pagotrans');
+boton.addEventListener('click',nuevoPagoTrans);
+boton=document.getElementById('pagocheque');
+boton.addEventListener('click',nuevoPagoCheque);
+boton=document.getElementById('eftbtn');
+boton.addEventListener('click',submitEft);
+boton=document.getElementById('transbtn');
+boton.addEventListener('click',submitTrans);
+boton=document.getElementById('chequebtn');
+boton.addEventListener('click',submitCheque);
+
+/*
+boton=document.getElementById('factrem');
+boton.addEventListener('Click',nuevaFactRem);
+boton=document.getElementById('factrem');
+boton.addEventListener('Click',nuevaNc);*/
+
+
+
 
 /*let max=cuentaCorrienteEmp1.length;
 let maxClientes=clientes.length;
